@@ -1,0 +1,29 @@
+IoT Smart Medicine Reminder - Wiring Connections
+
+  Component               ESP32 Pin
+  ----------------------- ---------------------------------
+  DS3231 SDA              GPIO 21
+  DS3231 SCL              GPIO 22
+  OLED SDA                GPIO 21 (Shared I2C)
+  OLED SCL                GPIO 22 (Shared I2C)
+  Servo Signal            GPIO 18
+  Buzzer (+)              GPIO 25
+  LED Anode (+)           GPIO 26 (through 220Ω resistor)
+  Push Button             GPIO 27
+  DS3231 VCC              3.3V
+  OLED VCC                3.3V
+  Servo VCC               External 5V
+  Buzzer VCC              3.3V
+  LED Cathode (-)         GND
+  Push Button Other Pin   GND (using INPUT_PULLUP)
+  DS3231 GND              GND
+  OLED GND                GND
+  Servo GND               Common GND
+  Buzzer GND              GND
+
+Notes
+
+-   OLED and DS3231 share the same I2C bus (GPIO21 SDA, GPIO22 SCL).
+-   Use a separate 5V supply for the servo motor.
+-   Connect all grounds together (ESP32, servo, RTC, OLED, buzzer).
+-   The push button uses the ESP32 internal pull-up resistor.
